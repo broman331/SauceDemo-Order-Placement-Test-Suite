@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         failOnWarning="true"
+         stopOnFailure="false"
+         executionOrder="default">
+
+    <testsuites>
+        <testsuite name="Login">
+            <file>tests/LoginTest.php</file>
+        </testsuite>
+        <testsuite name="Cart">
+            <file>tests/CartTest.php</file>
+        </testsuite>
+        <testsuite name="Checkout">
+            <file>tests/CheckoutTest.php</file>
+        </testsuite>
+        <testsuite name="Regression">
+            <directory>tests</directory>
+            <!-- Exclude the abstract base class — it is not a test class itself -->
+            <exclude>tests/BaseTest.php</exclude>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <!-- Selenium Grid / standalone server URL -->
+        <env name="SELENIUM_HOST"  value="http://localhost:4444"/>
+        <!-- Target application base URL (override for staging) -->
+        <env name="BASE_URL"       value="https://www.saucedemo.com"/>
+        <!-- Browser: chrome | firefox -->
+        <env name="BROWSER"        value="chrome"/>
+        <!-- Run browser in headless mode: true | false -->
+        <env name="HEADLESS"       value="true"/>
+        <!-- Implicit wait must stay 0; all sync uses explicit WebDriverWait -->
+        <env name="IMPLICIT_WAIT"  value="0"/>
+        <!-- Seconds to wait for elements before throwing TimeoutException -->
+        <env name="EXPLICIT_WAIT"  value="10"/>
+    </php>
+
+    <logging>
+        <junit outputFile="build/reports/junit.xml"/>
+    </logging>
+
+</phpunit>

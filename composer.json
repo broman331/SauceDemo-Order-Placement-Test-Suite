@@ -1,0 +1,29 @@
+{
+    "name": "qa/saucedemo-regression",
+    "description": "PHPUnit + WebDriver regression test suite for SauceDemo order placement process",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "php-webdriver/webdriver": "^1.16"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "SauceDemo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SauceDemo\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:login": "phpunit --testsuite Login",
+        "test:cart": "phpunit --testsuite Cart",
+        "test:checkout": "phpunit --testsuite Checkout",
+        "test:regression": "phpunit --testsuite Regression"
+    }
+}
